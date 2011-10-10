@@ -1,5 +1,5 @@
-/*
- * JBoss, Home of Professional Open Source
+
+ss, Home of Professional Open Source
  * Copyright 2010, Red Hat Middleware LLC, and individual contributors
  * by the @authors tag. See the copyright.txt in the distribution for a
  * full listing of individual contributors.
@@ -23,7 +23,7 @@ import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import org.jboss.logging.Logger;
+import org.jboss.solder.logging.Logger;
 import org.jboss.seam.examples.booking.account.Authenticated;
 import org.jboss.seam.examples.booking.i18n.DefaultBundleKey;
 import org.jboss.seam.examples.booking.model.User;
@@ -66,15 +66,14 @@ public class BookingAuthenticator extends BaseAuthenticator implements Authentic
             setStatus(AuthenticationStatus.FAILURE);
         }
         User user = em.find(User.class, credentials.getUsername());
-        if (user != null && credentials.getCredential() instanceof PasswordCredential) {
-            if (user.getPassword().equals(((PasswordCredential) credentials.getCredential()).getValue())) {
-                loginEventSrc.fire(user);
-                messages.info(new DefaultBundleKey("identity_loggedIn"), user.getName()).defaults("You're signed in as {0}")
-                        .params(user.getName());
-                setStatus(AuthenticationStatus.SUCCESS);
-                setUser(new SimpleUser(user.getUsername())); //TODO confirm the need for this set method
-                return;
-            }
+        if (user != null && credentials.getCredential() instanceof PasswordCredential && 
+            user.getPassword().equals(((PasswordCredential) credentials.getCredential()).getValue())) {
+            loginEventSrc.fire(user);
+            messages.info(new DefaultBundleKey("identity_loggedIn"), user.getName()).defaults("You're signed in as {0}")
+                    .params(user.getName());
+            setStatus(AuthenticationStatus.SUCCESS);
+            setUser(new SimpleUser(user.getUsername())); //TODO confirm the need for this set method
+            return;
         }
 
         messages.error(new DefaultBundleKey("identity_loginFailed")).defaults("Invalid username or password");
