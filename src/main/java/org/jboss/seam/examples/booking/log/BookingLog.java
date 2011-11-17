@@ -16,10 +16,10 @@
  */
 package org.jboss.seam.examples.booking.log;
 
-import org.jboss.logging.Logger.Level;
-import org.jboss.seam.solder.logging.Log;
-import org.jboss.seam.solder.logging.MessageLogger;
-import org.jboss.seam.solder.messages.Message;
+import org.jboss.solder.logging.Logger.Level;
+import org.jboss.solder.logging.Log;
+import org.jboss.solder.logging.MessageLogger;
+import org.jboss.solder.messages.Message;
 
 /**
  * @author <a href="http://community.jboss.org/people/dan.j.allen">Dan Allen</a>

@@ -30,11 +30,11 @@ import javax.transaction.Status;
 import javax.transaction.UserTransaction;
 import javax.validation.ConstraintViolationException;
 
-import org.jboss.logging.Logger;
+import org.jboss.solder.logging.Logger;
 import org.jboss.seam.examples.booking.model.Hotel;
 import org.jboss.seam.examples.booking.model.User;
-import org.jboss.seam.servlet.WebApplication;
-import org.jboss.seam.servlet.event.Initialized;
+import org.jboss.solder.servlet.WebApplication;
+import org.jboss.solder.servlet.event.Initialized;
 
 /**
  * An alternative bean used to import seed data into the database when the application is being initialized.
@@ -99,6 +99,11 @@ public class ApplicationInitializer {
         // use manual transaction control since this is a managed bean
         try {
             utx.begin();
+            // AS7-2045
+            entityManager.createQuery("delete from Booking").executeUpdate();
+            entityManager.createQuery("delete from Hotel").executeUpdate();
+            entityManager.createQuery("delete from User").executeUpdate();
+            
             persist(users);
             persist(hotels);
             utx.commit();
