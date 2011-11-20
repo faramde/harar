@@ -27,4 +27,4 @@ Then push the repo upstream
 
 That's it, you can now checkout your application at:
 
-    http://seambooking-$yourlogin.rhcloud.com
+    http://seambooking-$yournamespace.rhcloud.com
