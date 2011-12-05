@@ -23,8 +23,8 @@
         <version>3.1.0-SNAPSHOT</version>
         <relativePath>./parentpom.xml</relativePath>
     </parent>
-    <groupId>org.jboss.seam.examples</groupId>
-    <artifactId>seam-booking</artifactId>
+    <groupId>org.emmanuel</groupId>
+    <artifactId>harar</artifactId>
     <packaging>war</packaging>
     <name>Seam Booking Example</name>
     <description>The Seam booking example using the simplified Java EE 6 programming model and packaging structure (i.e., web archive)</description>
