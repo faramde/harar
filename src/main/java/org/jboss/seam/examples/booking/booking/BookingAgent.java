@@ -55,17 +55,17 @@ import static javax.persistence.PersistenceContextType.EXTENDED;
 @Stateful
 @ConversationScoped
 @Named
-@Interceptors(ConversationBoundaryInterceptor.class) // not necessary, this is a temporary workaround for GLASSFISH-17184
+//@Interceptors(ConversationBoundaryInterceptor.class) // not necessary, this is a temporary workaround for GLASSFISH-17184
 public class BookingAgent {
-    @Inject
-    @TypedCategory(BookingAgent.class)
-    private BookingLog log;
+//    @Inject
+//    @TypedCategory(BookingAgent.class)
+//    private BookingLog log;
 
     @PersistenceContext(type = EXTENDED)
     private EntityManager em;
 
-    @Inject
-    private Instance<TemplateMessage> messageBuilder;
+//    @Inject
+//    private Instance<TemplateMessage> messageBuilder;
 
     @Inject
     private Messages messages;
@@ -97,7 +97,7 @@ public class BookingAgent {
         // NOTE get a fresh reference that's managed by the extended persistence context
         hotelSelection = em.find(Hotel.class, id);
         if (hotelSelection != null) {
-            log.hotelSelected(user != null ? user.getName() : "Anonymous", hotelSelection.getName(), hotelSelection.getCity());
+//            log.hotelSelected(user != null ? user.getName() : "Anonymous", hotelSelection.getName(), hotelSelection.getCity());
         }
     }
 
@@ -107,14 +107,14 @@ public class BookingAgent {
 
         // for demo convenience
         booking.setCreditCardNumber("1111222233334444");
-        log.bookingInitiated(user.getName(), booking.getHotel().getName());
+//        log.bookingInitiated(user.getName(), booking.getHotel().getName());
 
         messages.info(new DefaultBundleKey("booking_initiated")).defaults("You've initiated a booking at the {0}.")
                 .params(booking.getHotel().getName());
     }
 
     public void validate() {
-        log.hotelEntityInPersistenceContext(em.contains(booking.getHotel()));
+//        log.hotelEntityInPersistenceContext(em.contains(booking.getHotel()));
         // if we got here, all validations passed
         bookingValid = true;
     }
@@ -132,7 +132,7 @@ public class BookingAgent {
     }
 
     public void onBookingComplete(@Observes(during = TransactionPhase.AFTER_SUCCESS) @Confirmed final Booking booking) {
-        log.bookingConfirmed(booking.getHotel().getName(), booking.getUser().getName());
+//        log.bookingConfirmed(booking.getHotel().getName(), booking.getUser().getName());
         messages.info(new DefaultBundleKey("booking_confirmed")).defaults("You're booked to stay at the {0} {1}.")
                 .params(booking.getHotel().getName(), new PrettyTime(locale).format(booking.getCheckinDate()));
     }

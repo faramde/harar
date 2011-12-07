@@ -15,20 +15,27 @@
         <h:outputStylesheet library="css" name="booking.css"/>
         <ui:insert name="head"/>
     </h:head>
+
     <h:body styleClass="#{empty pageClass ? 'page' : 'home'}">
         <div id="document">
+     		<h1>Harar Emmanuel Church</h1>
             <div id="header">
-                <div id="title">
-                    <!-- <h:graphicImage value="/img/hdr.title.gif" alt="JBoss Suites banner"/> -->
-                    <h1>Harar Emmanuel Church</h1>
-                </div>
+<!--                 <div id="title">
+                    <h:graphicImage value="/img/hdr.title.gif" alt="JBoss Suites banner"/>
+                </div> -->
                 <h:form id="menuForm">
                     <div id="status">
-                        <h:outputText value="(#{currentUser.name})" rendered="#{identity.loggedIn}" styleClass="user"/>
-                        #{' '}
+   <!--                      <h:outputText value="(#{currentUser.name})" rendered="#{identity.loggedIn}" styleClass="user"/>
+                        #{' '} -->
                         <pretty:link mappingId="home">#{bundles.messages.template_linkHome}</pretty:link>
                         #{' | '}
                         <h:link id="aboutUs" outcome="/aboutUs.xhtml" value="#{bundles.messages.template_linkAboutUs}"/>
+                       	#{' | '}
+                        <h:link id="contactUs" outcome="/contactUs.xhtml" value="#{bundles.messages.template_linkContactUs}"/>
+                       	#{' | '}
+                        <h:link id="members" outcome="/members.xhtml" value="#{bundles.messages.template_linkMembers}"/>
+                       	#{' | '}
+                        <h:link id="mediaResources" outcome="/mediaResources.xhtml" value="#{bundles.messages.template_linkMediaResource}"/>
                         #{' | '}
                         <h:link id="search" outcome="/search.xhtml" value="#{bundles.messages.template_linkHotels}"/>
                         <h:panelGroup rendered="#{not identity.loggedIn}">

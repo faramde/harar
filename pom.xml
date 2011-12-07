@@ -284,7 +284,7 @@
                            <executions>
                                   <execution>
                                          <id>deploy-driver</id>
-                                         <phase>install</phase>
+                                         <phase>installXXXX</phase>
                                          <configuration>
                                                 <groupId>mysql</groupId>
                                                 <artifactId>mysql-connector-java</artifactId>
@@ -296,7 +296,7 @@
                                   </execution>
                                   <execution>
                                          <id>add-datasource</id>
-                                         <phase>install</phase>
+                                         <phase>installXXXX</phase>
                                          <configuration>
                                                 <address>subsystem=datasources,data-source=golfPlusDatasource</address>
                                                 <properties>
