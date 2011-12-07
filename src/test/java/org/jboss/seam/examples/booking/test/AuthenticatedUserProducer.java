@@ -11,8 +11,8 @@ public class AuthenticatedUserProducer {
     @PersistenceContext
     EntityManager em;
 
-    @Produces
-    @Authenticated
+//    @Produces
+//    @Authenticated
     public User getRegisteredUser() {
         return em.find(User.class, "ike");
     }
