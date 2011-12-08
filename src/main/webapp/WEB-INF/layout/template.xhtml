@@ -33,11 +33,9 @@
                        	#{' | '}
                         <h:link id="contactUs" outcome="/contactUs.xhtml" value="#{bundles.messages.template_linkContactUs}"/>
                        	#{' | '}
-                        <h:link id="members" outcome="/members.xhtml" value="#{bundles.messages.template_linkMembers}"/>
+                        <h:link id="members" outcome="/memberRegistrar.xhtml" value="#{bundles.messages.template_linkMembers}"/>
                        	#{' | '}
                         <h:link id="mediaResources" outcome="/mediaResources.xhtml" value="#{bundles.messages.template_linkMediaResource}"/>
-                        #{' | '}
-                        <h:link id="search" outcome="/search.xhtml" value="#{bundles.messages.template_linkHotels}"/>
                         <h:panelGroup rendered="#{not identity.loggedIn}">
                             #{' | '}
                             <pretty:link mappingId="home">#{bundles.messages.template_linkLogin}</pretty:link>

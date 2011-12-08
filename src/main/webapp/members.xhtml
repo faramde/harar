@@ -26,16 +26,12 @@
          <span class="errors">
             <h:messages id="messages" globalOnly="true"/>
          </span>
-
             <h1>Search Member</h1>
-
             <h:form id="searchForm" prependId="false">
                 <fieldset>
                     <h:inputText id="query" value="#{searchCriteria.query}" style="width: 165px;" autocomplete="off">
                         <f:ajax event="keyup" listener="#{hotelSearch.find}" render=":searchResults" onevent="controlSpinner"/>
                     </h:inputText>
-
-                    #{' '}
                     <span id="activity"><h:graphicImage id="spinner" value="/img/spinner.gif" style="display: none;"/></span>
                 </fieldset>
             </h:form>
@@ -43,7 +39,7 @@
 
         <h:panelGroup id="searchResults">
             <div class="section">
-                <h:outputText id="noHotelsMsg" value="No Hotels Found" rendered="#{empty hotels}"/>
+                <h:outputText id="noHotelsMsg" value="No Member is Found" rendered="#{empty hotels}"/>
                 <h:form id="hotelSelectionForm">
                     <h:dataTable id="hotels" value="#{hotels}" var="_hotel" rendered="#{not empty hotels}"
                                  columnClasses=",,,,action">
@@ -90,11 +86,11 @@
         </h:panelGroup>
 
         <div class="section">
-            <h1>Current Hotel Bookings</h1>
+            <h1>Current Members</h1>
         </div>
         <div class="section">
             <h:panelGroup rendered="#{not identity.loggedIn}">
-                You must be logged in to see the list of your hotel bookings.
+                You must be logged in to see more.
             </h:panelGroup>
             <h:form id="bookings" rendered="#{identity.loggedIn}">
                 <h:outputText value="No bookings found." rendered="#{empty bookings}"/>

@@ -1,0 +1,103 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:s="http://jboss.org/seam/faces"
+                xmlns:p="http://java.sun.com/jsf/composite/components/property"
+                template="/WEB-INF/layout/template.xhtml">
+
+    <ui:param name="pageClass" value="home"/>
+
+    <ui:define name="metadata">
+        <f:metadata>
+            <f:event type="preRenderView" listener="#{registrar.notifyIfRegistrationIsInvalid}"/>
+        </f:metadata>
+    </ui:define>
+
+    <ui:define name="content">
+
+        <div class="section">
+            <h1>Register New Member</h1>
+        </div>
+
+        <div class="section">
+
+            <div class="errors">
+                <h:messages id="messages" globalOnly="true"/>
+            </div>
+
+            <h:form id="regForm" prependId="false">
+
+                <fieldset>
+                    <p:input id="name" label="Full name">
+                        <h:inputText id="input" value="#{newUser.name}"/>
+                    </p:input>
+                    <p:input id="username" label="Username">
+                        <h:inputText id="input" value="#{newUser.username}"
+                                     binding="#{registrar.usernameInput}"/>
+                    </p:input>
+					<p:input id="address" label="Address">
+                        <h:inputText id="input" value="#{newUser.address}"/>
+                    </p:input>
+					<p:input id="poBox" label="PoBox">
+                        <h:inputText id="input" value="#{newUser.address}"/>
+                    </p:input>
+					<p:input id="phone" label="Phone">
+                        <h:inputText id="input" value="#{newUser.address}"/>
+                    </p:input>
+					<p:input id="kebele" label="Kebele">
+                        <h:inputText id="input" value="#{newUser.address}"/>
+                    </p:input>
+					<p:input id="city" label="City">
+                        <h:inputText id="input" value="#{newUser.address}"/>
+                    </p:input>
+ 					<p:input id="country" label="Country">
+                        <h:inputText id="input" value="#{newUser.address}"/>
+                    </p:input>
+
+                    <p:input id="email" label="Email">
+                        <h:inputText id="input" value="#{newUser.email}"/>
+                    </p:input>
+                    <div class="buttonBox">
+                        <h:commandButton id="register" value="Register" action="#{registrar.register}"/>
+                        #{' '}
+                        <h:button id="cancel" value="Cancel" outcome="/home.xhtml"/>
+                    </div>
+
+                </fieldset>
+
+                <s:validateForm id="passwordCheck" validatorId="confirmPassword"
+                                fields="password=password:input confirmPassword=confirmPassword:input"/>
+
+            </h:form>
+            <div class="buttonBox">
+                <h:button id="search" value="#{bundles.messages.template_linkHotels}" outcome="/search.xhtml"/>
+            </div>
+        </div>
+
+    </ui:define>
+
+    <ui:define name="sidebar">
+        <div class="content">
+            <h1>"Gospel in a nutshell"</h1>
+
+            <p>
+          		 John 3:16:For God so loved the world, that he gave his only begotten Son, that whosoever believeth in him should not perish,
+          		  but have everlasting life. 
+          		  <br/>
+          		 John 3:17 :For God did not send his Son into the world to condemn the world, but to save the world through him. 
+          		  <br/>
+         		 John 3:18 : Whoever believes in him is not condemned, but whoever does not believe stands condemned already because he has not believed in the name of God's one and only Son
+            </p>
+
+            <p>
+                <a href="#" onclick="window.open('exp/registerExp.html','exp','width=752,height=500,scrollbars=yes');">
+                    What happens when I register?
+                </a>
+            </p>
+        </div>
+    </ui:define>
+
+</ui:composition>

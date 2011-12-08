@@ -43,6 +43,7 @@ import org.jboss.solder.core.Veto;
 public class User implements Serializable {
     private static final long serialVersionUID = -602733026033932730L;
     private String username;
+    private String address;
     private String password;
     private String name;
     private String email;
@@ -61,7 +62,13 @@ public class User implements Serializable {
         this.password = password;
     }
 
-    @NotNull
+    public User(String username, String address, String password, String name,
+			String email) {
+    	this(name, username, email, password);
+		this.address = address;
+	}
+
+	@NotNull
     @Size(min = 1, max = 100)
     public String getName() {
         return name;
@@ -69,6 +76,16 @@ public class User implements Serializable {
 
     public void setName(final String name) {
         this.name = name;
+    }
+    
+    @NotNull
+    @Size(min = 1, max = 100)
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(final String address) {
+        this.address = address;
     }
 
     @NotNull
@@ -112,4 +129,6 @@ public class User implements Serializable {
     public String toString() {
         return "User(" + username + ")";
     }
+
+
 }
